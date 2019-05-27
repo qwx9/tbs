@@ -1,0 +1,64 @@
+map=tile0 unit=rook2
+map=tile1 unit=knight2
+map=tile0 unit=bishop2
+map=tile1 unit=king2
+map=tile0 unit=queen2
+map=tile1 unit=bishop2
+map=tile0 unit=knight2
+map=tile1 unit=rook2
+map=tile1 unit=pawn2
+map=tile0 unit=pawn2
+map=tile1 unit=pawn2
+map=tile0 unit=pawn2
+map=tile1 unit=pawn2
+map=tile0 unit=pawn2
+map=tile1 unit=pawn2
+map=tile0 unit=pawn2
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile1
+map=tile0
+map=tile0 unit=pawn1
+map=tile1 unit=pawn1
+map=tile0 unit=pawn1
+map=tile1 unit=pawn1
+map=tile0 unit=pawn1
+map=tile1 unit=pawn1
+map=tile0 unit=pawn1
+map=tile1 unit=pawn1
+map=tile1 unit=rook1
+map=tile0 unit=knight1
+map=tile1 unit=bishop1
+map=tile0 unit=king1
+map=tile1 unit=queen1
+map=tile0 unit=bishop1
+map=tile1 unit=knight1
+map=tile0 unit=rook1

@@ -1,0 +1,137 @@
+nocorpse=
+
+unit=inf	vis=2 mp=3 cost=1000
+	# ammo 0, food 99 (-1)
+unit=heavy	vis=2 mp=2 cost=3000
+	# ammo 3,-1, food 70
+unit=lav	vis=5 mp=8 cost=4000
+	# ammo -1, food 80
+unit=ltank	vis=3 mp=6 cost=7000
+	# ammo 9,-1, food 70
+unit=mtank	vis=1 mp=5 cost=16000
+	# ammo 8,-1, food 50
+unit=etank	vis=1 mp=6 cost=22000
+	# ammo 9,-1, food 99
+unit=htank	vis=1 mp=4 cost=28000
+	# ammo 3,-1, food 50
+unit=arty	vis=1 mp=5 range=2,3 cost=6000
+	# ammo 9, food 50
+unit=rkt	vis=1 mp=5 range=3,5 cost=15000
+	# ammo 6, food 50
+unit=aab	vis=2 mp=6 cost=8000
+	# ammo 9, food 60
+unit=aam	vis=4 mp=5 range=3,5 cost=12000
+	# ammo 6, food 50
+unit=apu	vis=1 mp=6 cost=5000
+	# no weapon
+	# resupply fuel and ammo to adjacent units
+	# load up to 1 inf/heavy
+	# food 70
+unit=fighter	vis=2 mp=9 cost=20000
+	# ammo 9, food 99
+unit=bomber	vis=2 mp=7 cost=22000
+	# ammo 9, food 99
+unit=stealth	vis=4 mp=6 cost=24000
+	# cloak/uncloak
+	# ammo 6, food 60
+unit=chopper	vis=3 mp=6 cost=9000
+	# ammo 6,-1, food 99
+unit=heli	vis=2 mp=6 cost=5000
+	# no weapon
+	# load up to 1 inf/heavy
+	# food 99
+unit=missile	vis=1 mp=9 cost=24000
+	# no weapon
+	# trigger -> aoe 1,3 damage=50
+unit=lander	vis=1 mp=6 cost=12000
+	# no weapon
+	# load up to 1 inf/heavy
+	# food 99
+unit=repboat	vis=1 mp=7 cost=7500
+	# no weapon
+	# load 2 inf/heavy
+	# repair unit
+	# food 60
+unit=cruiser	vis=3 mp=6 cost=18000
+	# ammo 9, food 99
+	# can carry 2 heli?
+unit=sub	vis=5 mp=5 cost=20000
+	# ammo 6, food 60
+	# cloak/uncloak
+unit=btlship	vis=2 mp=5 range=2,6 cost=28000
+	# ammo 9, food 99
+unit=carrier	vis=4 mp=5 range=3,8 cost=30000
+	# ammo 9, food 99
+	# load/unload/resupply (but not repair?) 2 air units
+
+move=bridge	# changed to allow any unit
+move=road
+	lander=9 repboat=9 cruiser=9 sub=9 btlship=9 carrier=9
+move=plain
+	lav=1 arty=1 rkt=1 aam=1
+	lander=9 repboat=9 cruiser=9 sub=9 btlship=9 carrier=9
+move=wood
+	lav=2 arty=2 rkt=2 aam=2
+	ltank=1 mtank=1 etank=1 htank=1 aab=1 apu=1
+	lander=9 repboat=9 cruiser=9 sub=9 btlship=9 carrier=9
+move=mountain
+	inf=1
+	lav=9 arty=9 rkt=9 aam=9
+	ltank=9 mtank=9 etank=9 htank=9 aab=9 apu=9
+	lander=9 repboat=9 cruiser=9 sub=9 btlship=9 carrier=9
+move=sea
+	inf=9 heavy=9
+	lav=9 arty=9 rkt=9 aam=9
+	ltank=9 mtank=9 etank=9 htank=9 aab=9 apu=9
+move=shoal
+	cruiser=9 sub=9 btlship=9 carrier=9
+move=reef
+	inf=9 heavy=9
+	lav=9 arty=9 rkt=9 aam=9
+	ltank=9 mtank=9 etank=9 htank=9 aab=9 apu=9
+	lander=1 repboat=1 cruiser=1 sub=1 btlship=1 carrier=1
+move=mordor
+	inf=9 heavy=9
+	lav=9 arty=9 rkt=9 aam=9
+	ltank=9 mtank=9 etank=9 htank=9 aab=9 apu=9
+	fighter=9 bomber=9 stealth=9 missile=9 chopper=9 heli=9
+	lander=9 repboat=9 cruiser=9 sub=9 btlship=9 carrier=9
+
+terrain=bridge		move=bridge
+terrain=road		move=road
+terrain=plain		move=plain
+terrain=wood		move=wood def=1
+terrain=mountain	move=mountain def=3
+terrain=river		move=mountain
+terrain=sea		move=sea
+terrain=shoal		move=shoal
+terrain=reef		move=reef
+terrain=mordor		move=mordor
+terrain=hq		move=road def=3 income=1000
+terrain=city		move=road def=2 income=1000
+terrain=factory		move=road def=2 income=1000
+terrain=airport		move=road def=2 income=1000
+terrain=shipyard	move=bridge def=2 income=1000
+terrain=silo		move=road def=2
+	# launch: aoe 1,3 damage=30, only once
+terrain=tower		move=road def=2
+	# global atk bonus
+
+spawn=factory	unit=inf unit=heavy unit=lav unit=arty unit=rkt unit=aab unit=aam unit=apu unit=ltank unit=mtank unit=etank unit=htank
+spawn=airport	unit=fighter unit=bomber unit=stealth unit=missile unit=chopper unit=heli
+spawn=shipyard	unit=lander unit=repboat unit=cruiser unit=sub unit=btlship unit=carrier
+
+resupply=hq spawn=factory
+resupply=city spawn=factory
+resupply=factory spawn=factory
+resupply=airport spawn=airport
+resupply=shipyard spawn=shipyard
+
+occupy=hq unit=inf unit=heavy
+occupy=city unit=inf unit=heavy
+occupy=factory unit=inf unit=heavy
+occupy=airport unit=inf unit=heavy
+occupy=shipyard unit=inf unit=heavy
+occupy=tower unit=inf unit=heavy
+
+# FIXME: http://warswiki.org/wiki/Damage/Advance_Wars:_Dual_Strike_chart

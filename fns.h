@@ -1,0 +1,14 @@
+void	dopan(int, int);
+void	composeat(Map*, u32int);
+void	drawpicat(Map*, u32int**);
+void	redraw(int);
+void	resetdraw(void);
+void	initimages(void);
+void	init(void);
+void	spawnunit(Map*, Unit*, int);
+void	endturn(void);
+void	initgame(void);
+void	lmenu(char**, void(*[])(void));
+char*	estrdup(char*);
+void*	emalloc(ulong);
+void*	erealloc(void*, ulong, ulong);

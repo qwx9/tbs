@@ -1,0 +1,6 @@
+unit=pawn
+unit=bishop
+unit=knight
+unit=rook
+unit=queen
+unit=king

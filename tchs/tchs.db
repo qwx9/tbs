@@ -1,0 +1,9 @@
+unit=pawn
+unit=bishop
+unit=knight
+unit=rook
+unit=queen
+unit=king
+
+terrain=tile0
+terrain=tile1

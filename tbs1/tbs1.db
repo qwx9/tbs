@@ -1,0 +1,56 @@
+initmoney=500
+firstturnnoinc=1
+
+unit=paladin	atk=55 Δatk=10 def=20 mp=4 cost=200 unique=1
+unit=fighter	atk=50 Δatk=5 def=5 mp=4 cost=150
+unit=ranger	atk=50 Δatk=5 range=1,2 mp=4 cost=250
+unit=elemental	atk=50 Δatk=5 mp=4 cost=300
+	# damage + defence bonus when on water
+	# (if move == water and move == terrain type?)
+#unit=necromancer atk=40 Δatk=5 def=5 mp=4 cost=400
+#	# animate dead
+#unit=priest atk=35 Δatk=5 def=10 mp=4 cost=500
+#	# bless units in 2 square grid
+#unit=mage atk=60 Δatk=5 def=15 mp=5 cost=600
+#	# slow/curse attacked unit
+#unit=golem atk=60 Δatk=10 def=30 mp=4 cost=600
+#unit=catapult atk=50 Δatk=20 range=2,4 def=10 mp=3 cost=700
+#unit=dragon atk=70 Δatk=10 def=25 mp=6 cost=1000
+#unit=risen atk=40 Δatk=10 def=2 mp=4
+unit=corpse
+#	# dies on the 2 turn after spawn, without spawning another
+#	# players can move on top of it, destroying it
+
+# FIXME: damage ratios, 100 by default
+#ratio=ranger	dragon=150
+
+# FIXME: terrain bonuses
+
+move=road
+move=hill	paladin=1 fighter=1 ranger=1 elemental=1
+move=mountain	paladin=2 fighter=2 ranger=2 elemental=2
+move=water	paladin=2 fighter=2 ranger=2
+
+terrain=road		move=road
+terrain=plain		def=1 move=road
+terrain=hill		def=2 move=hill
+terrain=wood		def=2 move=hill
+terrain=mountain	def=3 move=mountain
+terrain=water		move=water
+terrain=castle		def=3 move=road income=50
+terrain=city		def=3 move=road income=30
+terrain=ruin		def=3 move=road
+terrain=fort		def=3 move=road
+
+spawn=castle	unit=paladin unit=fighter unit=ranger unit=elemental
+
+resupply=castle spawn=castle
+resupply=city spawn=castle
+resupply=fort spawn=castle
+
+occupy=castle unit=paladin
+occupy=city unit=paladin unit=fighter
+
+#destroy=city terrain=ruin unit=catapult
+
+#repair=ruin terrain=city unit=paladin unit=fighter
