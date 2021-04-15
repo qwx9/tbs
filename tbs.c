@@ -95,7 +95,7 @@ void
 threadmain(int argc, char **argv)
 {
 	Rune r;
-	Mouse m, om;
+	Mouse om;
 
 	ARGBEGIN{
 	case 'd': dbname = EARGF(usage()); break;
@@ -114,10 +114,11 @@ threadmain(int argc, char **argv)
 		sysfatal("initkeyboard: %r");
 	if((mctl = initmouse(nil, screen)) == nil)
 		sysfatal("initmouse: %r");
+	om.xy = ZP;
 	initimages();
 	resetdraw();
 	Alt a[] = {
-		{mctl->c, &m, CHANRCV},
+		{mctl->c, &mctl->Mouse, CHANRCV},
 		{mctl->resizec, nil, CHANRCV},
 		{kctl->c, &r, CHANRCV},
 		{nil, nil, CHANEND}
@@ -127,17 +128,20 @@ threadmain(int argc, char **argv)
 		default:
 			sysfatal("alt: %r");
 		case 0:
-			if((m.buttons & 1) == 1 && (om.buttons & 1) == 0)
-				select(m.xy);
-			if(m.buttons & 2)
+			if(eqpt(om.xy, ZP))
+				om = mctl->Mouse;
+			if((mctl->buttons & 1) == 1 && (om.buttons & 1) == 0)
+				select(mctl->xy);
+			if(mctl->buttons & 2)
 				mmenu();
-			if(m.buttons & 4)
-				dopan(m.xy.x - om.xy.x, m.xy.y - om.xy.y);
-			om = m;
+			if(mctl->buttons & 4)
+				dopan(mctl->xy.x - om.xy.x, mctl->xy.y - om.xy.y);
+			om = mctl->Mouse;
 			break;
 		case 1:
 			if(getwindow(display, Refnone) < 0)
 				sysfatal("getwindow: %r");
+			om = mctl->Mouse;
 			resetdraw();
 			break;
 		case 2:
